@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Editor de memes accesible y responsivo">
+<meta name="author" content="Tu Nombre">
+<title>Editor de Memes</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Editor de Memes</h1>
+    <button id="toggle-mode">Modo Oscuro</button>
+</header>
+
+<main>
+    <section id="image-panel">
+    <input type="url" id="image-url" placeholder="Ingresa la URL de la imagen">  <button id="apply-url">Aplicar Imagen</button>
+    <input type="color" id="bg-color" value="#ffffff">
+    <select id="blend-mode">
+        <option value="normal">Normal</option>
+        <option value="multiply">Multiplicar</option>
+        <option value="screen">Pantalla</option>
+        <option value="overlay">Superposición</option>
+        <option value="darken">Oscurecer</option>
+        <option value="lighten">Aclarar</option>
+    </select>
+    <div id="image-filters">
+        <label>Brillo</label>
+        <input type="range" id="brightness" min="0" max="2" step="0.1" value="1">
+        <button id="reset-filters">Restablecer Filtros</button>
+    </div>
+    </section>
+
+    <section id="text-panel">
+    <textarea id="top-text" placeholder="Texto superior"></textarea>
+    <textarea id="bottom-text" placeholder="Texto inferior"></textarea>
+    <select id="font-family">
+        <option value="Arial">Arial</option>
+        <option value="Comic Sans MS">Comic Sans</option>
+        <option value="Impact">Impact</option>
+    </select>
+    <input type="color" id="text-color" value="#000000">
+    <input type="color" id="bg-text-color" value="#ffffff">
+    </section>
+
+    <section id="meme-container">
+    <div id="meme">
+        <p id="top-text-display"></p>
+        <img id="meme-image" src="" alt="Tu meme personalizado">
+        <p id="bottom-text-display"></p>
+    </div>
+    <button id="download-meme">Descargar Meme</button>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

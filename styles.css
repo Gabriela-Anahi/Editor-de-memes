@@ -1,9 +1,16 @@
+/* Estilo general para el body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .dark-mode {
@@ -16,12 +23,31 @@ header {
     color: #fff;
     text-align: center;
     padding: 10px;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
 }
 
 button {
     padding: 10px;
     margin: 5px;
     cursor: pointer;
+    background-color: #a70caf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #b50ad7;
 }
 
 main {
@@ -30,63 +56,136 @@ main {
     justify-content: center;
     gap: 20px;
     padding: 20px;
-} 
+    max-width: 800px;
+    width: 100%;
+}
 
 section {
-    border: 1px solid #ccc;
+    border: 1px solid #4a0853;
     padding: 10px;
     width: 300px;
-    background: #fff;
+    background: #ece8e8;
+    border-radius: 8px;
 }
 
 #meme-container {
     position: relative;
-}
-
-#meme {
-    position: relative;
     display: inline-block;
-}
-
-#meme img {
     max-width: 100%;
-    filter: brightness(1) opacity(1);
+    margin: 0 auto;
+    overflow: hidden; 
+    text-align: center;
 }
 
-#meme p {
+
+#top-text-display {
     position: absolute;
-    width: 100%;
-    color: #fff;
-    font-size: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    top: 5px; 
+    width: calc(100% - 20px); 
+    text-align: center;
+    font-size: clamp(1.2rem, 2.5vw, 2.5rem); 
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px black;
     pointer-events: none;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px; 
+    box-sizing: border-box;
+    word-wrap: break-word; 
+    white-space: normal;
+    max-width: 100%;
+    overflow: hidden;
 }
-
-#top-text-display,
 #bottom-text-display {
-position: relative;
-width: 100%;
-text-align: center;
-z-index: 1;
-font-size: 20px;
-font-family: Arial, sans-serif;
-color: white;
-text-shadow: 2px 2px 5px black;
+    position: absolute;
+    width: calc(100% - 20px); 
+    text-align: center;
+    font-size: clamp(1.2rem, 2.5vw, 2.5rem); 
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    pointer-events: none;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px; 
+    box-sizing: border-box;
+    word-wrap: break-word; 
+    white-space: normal;
+    max-width: 100%; 
+    overflow: hidden; 
+    box-sizing: border-box; 
 }
 
 #top-text-display {
-    top: 10px;
+    top: 0px; 
 }
-#down-text-display {
-    bottom: 10px;
-} */
 
 #bottom-text-display {
-    bottom: 10px;
+    bottom: 10px; 
+}
+
+#filters-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#filters-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#filters-container input[type="range"],
+#filters-container input[type="checkbox"] {
+    width: 100%;
+}
+
+#filters-container button {
+    grid-column: span 2;
+    padding: 10px;
+    background-color: #6f107f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#filters-container button:hover {
+    background-color: #440650;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.control-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.control-group select,
+.control-group input {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
     main {
-flex-direction: column;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #filters-container {
+        grid-template-columns: 1fr;
     }
 }

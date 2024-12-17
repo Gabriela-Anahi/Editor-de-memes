@@ -1,57 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Editor de memes accesible y responsivo">
-<meta name="author" content="Tu Nombre">
-<title>Editor de Memes</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Editor de memes accesible y responsivo">
+    <meta name="author" content="Gabriela Anahi">
+    <title>Editor de Memes</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header>
     <h1>Editor de Memes</h1>
-    <button id="toggle-mode">Modo Oscuro</button>
+    <button id="toggle-mode" aria-label="Alternar modo oscuro">Modo Oscuro</button>
 </header>
 
 <main>
     <section id="image-panel">
-    <input type="url" id="image-url" placeholder="Ingresa la URL de la imagen">  <button id="apply-url">Aplicar Imagen</button>
-    <input type="color" id="bg-color" value="#ffffff">
-    <select id="blend-mode">
-        <option value="normal">Normal</option>
-        <option value="multiply">Multiplicar</option>
-        <option value="screen">Pantalla</option>
-        <option value="overlay">Superposición</option>
-        <option value="darken">Oscurecer</option>
-        <option value="lighten">Aclarar</option>
-    </select>
-    <div id="image-filters">
-        <label>Brillo</label>
-        <input type="range" id="brightness" min="0" max="2" step="0.1" value="1">
-        <button id="reset-filters">Restablecer Filtros</button>
-    </div>
+        <input type="url" id="image-url" placeholder="Ingresa la URL de la imagen" aria-label="URL de la imagen">
+        <button id="apply-url" aria-label="Aplicar URL de imagen">Aplicar Imagen</button>
+        <input type="color" id="bg-color" value="#ffffff" aria-label="Color de fondo">
+        
+        <div id="filters-container">
+            <label for="brightness">Brillo</label>
+            <input type="range" id="brightness" min="0" max="2" step="0.1" value="1">
+            
+            <label for="opacity">Opacidad</label>
+            <input type="range" id="opacity" min="0" max="1" step="0.1" value="1">
+            
+            <label for="contrast">Contraste</label>
+            <input type="range" id="contrast" min="1" max="10" step="0.1" value="1">
+            
+            <label for="blur">Desenfoque</label>
+            <input type="range" id="blur" min="0" max="10" step="0.1" value="0">
+            
+            <label for="grayscale">Escala de grises</label>
+            <input type="range" id="grayscale" min="0" max="1" step="0.01" value="0">
+            
+            <label for="sepia">Sepia</label>
+            <input type="range" id="sepia" min="0" max="1" step="0.01" value="0">
+            
+            <label for="hue-rotation">Hue</label>
+            <input type="range" id="hue-rotation" min="0" max="360" step="1" value="0">
+            
+            <label for="saturation">Saturación</label>
+            <input type="range" id="saturation" min="0" max="10" step="0.1" value="1">
+            
+            <label for="invert">Negativo</label>
+            <input type="checkbox" id="invert">
+            
+            <button id="reset-filters" aria-label="Restablecer filtros">Restablecer Filtros</button>
+        </div>
     </section>
 
     <section id="text-panel">
-    <textarea id="top-text" placeholder="Texto superior"></textarea>
-    <textarea id="bottom-text" placeholder="Texto inferior"></textarea>
-    <select id="font-family">
-        <option value="Arial">Arial</option>
-        <option value="Comic Sans MS">Comic Sans</option>
-        <option value="Impact">Impact</option>
-    </select>
-    <input type="color" id="text-color" value="#000000">
-    <input type="color" id="bg-text-color" value="#ffffff">
+        <textarea id="top-text" placeholder="Texto superior" aria-label="Texto superior"></textarea>
+        <textarea id="bottom-text" placeholder="Texto inferior" aria-label="Texto inferior"></textarea>
+        
+        <div class="control-group">
+            <label for="font-family">Fuente</label>
+            <select id="font-family">
+                <option value="Arial">Arial</option>
+                <option value="Comic Sans MS">Comic Sans</option>
+                <option value="Impact">Impact</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+            </select>
+        </div>
+    
+        <div class="control-group">
+            <label for="text-color">Color de texto</label>
+            <input type="color" id="text-color" value="#000000">
+        </div>
+    
+        <div class="control-group">
+            <label for="bg-text-color">Color de fondo del texto</label>
+            <input type="color" id="bg-text-color" value="#ffffff">
+        </div>
     </section>
+    
 
     <section id="meme-container">
-    <div id="meme">
-        <p id="top-text-display"></p>
-        <img id="meme-image" src="" alt="Tu meme personalizado">
-        <p id="bottom-text-display"></p>
-    </div>
-    <button id="download-meme">Descargar Meme</button>
+        <div id="meme">
+            <p id="top-text-display"></p>
+            <img id="meme-image" src="" alt="Tu meme personalizado">
+            <p id="bottom-text-display"></p>
+        </div>
+        <button id="download-meme" aria-label="Descargar meme">Descargar Meme</button>
     </section>
 </main>
 

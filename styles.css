@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -18,26 +18,29 @@ body {
     color: white;
 }
 
+/* Estilos para la cabecera */
 header {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 1rem;
     width: 100%;
     max-width: 800px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 header h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
 
+/* Botón único de descargar meme */
 button {
-    padding: 10px;
-    margin: 5px;
+    padding: 0.8rem;
+    margin: 0.5rem;
     cursor: pointer;
     background-color: #a70caf;
     color: white;
@@ -50,107 +53,100 @@ button:hover {
     background-color: #b50ad7;
 }
 
+/* Disposición principal */
 main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 1.5rem;
+    padding: 1rem;
     max-width: 800px;
     width: 100%;
 }
 
 section {
     border: 1px solid #4a0853;
-    padding: 10px;
-    width: 300px;
+    padding: 1rem;
+    flex: 1 1 calc(100% - 2rem);
+    max-width: 300px;
     background: #ece8e8;
     border-radius: 8px;
 }
 
+/* Contenedor de memes */
 #meme-container {
     position: relative;
     display: inline-block;
-    max-width: 100%;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
     overflow: hidden; 
     text-align: center;
+    margin: 0 auto; /* Centra el meme en el contenedor */
 }
 
+#meme-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 
-#top-text-display {
+#top-text-display, #bottom-text-display {
     position: absolute;
-    top: 5px; 
-    width: calc(100% - 20px); 
+    width: calc(100% - 20px);
     text-align: center;
-    font-size: clamp(1.2rem, 2.5vw, 2.5rem); 
+    font-size: clamp(1.2rem, 2.5vw, 2.5rem);
     font-weight: bold;
     color: white;
     text-shadow: 2px 2px 5px black;
-    pointer-events: none;
+    pointer-events: none; /* Asegura que no se pueda seleccionar */
     left: 50%;
     transform: translateX(-50%);
-    padding: 5px; 
-    box-sizing: border-box;
-    word-wrap: break-word; 
+    padding: 5px;
+    word-wrap: break-word;
     white-space: normal;
-    max-width: 100%;
-    overflow: hidden;
-}
-#bottom-text-display {
-    position: absolute;
-    width: calc(100% - 20px); 
-    text-align: center;
-    font-size: clamp(1.2rem, 2.5vw, 2.5rem); 
-    font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 5px black;
-    pointer-events: none;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 5px; 
     box-sizing: border-box;
-    word-wrap: break-word; 
-    white-space: normal;
-    max-width: 100%; 
-    overflow: hidden; 
-    box-sizing: border-box; 
 }
 
 #top-text-display {
-    top: 0px; 
+    top: 5%; /* Ajusta la posición superior */
+    z-index: 1; /* Asegura que esté visible sobre la imagen */
 }
 
 #bottom-text-display {
-    bottom: 10px; 
+    bottom: 5%; /* Ajusta la posición inferior */
+    z-index: 1; /* Asegura que esté visible sobre la imagen */
 }
 
-#filters-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 20px;
-    width: 100%;
+/* Controles */
+.control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
 }
 
-#filters-container label {
+.control-group label {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
 
-#filters-container input[type="range"],
-#filters-container input[type="checkbox"] {
+.control-group select,
+.control-group input {
+    padding: 0.5rem;
+    font-size: 1rem;
     width: 100%;
 }
 
+/* Botón único de filtros (si es necesario) */
 #filters-container button {
     grid-column: span 2;
-    padding: 10px;
+    padding: 0.8rem;
     background-color: #6f107f;
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
@@ -159,33 +155,36 @@ section {
     background-color: #440650;
 }
 
-.control-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 15px;
-}
+/* Media Queries */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-.control-group label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 16px;
-}
-
-.control-group select,
-.control-group input {
-    padding: 8px;
-    font-size: 16px;
-    width: 100%;
+    main {
+        gap: 1rem;
+        padding: 1rem;
+    }
 }
 
 @media (max-width: 768px) {
-    main {
-        flex-direction: column;
-        align-items: center;
+    header h1 {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        width: 90%;
     }
 
-    #filters-container {
-        grid-template-columns: 1fr;
+    #meme-container {
+        max-width: 100%;
+    }
+
+    button {
+        padding: 0.6rem;
+        font-size: 0.9rem;
     }
 }
